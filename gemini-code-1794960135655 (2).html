@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Abuela | Pastelería Artesanal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;0,700;1,500&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cafe-oscuro: #4e2a17;
+            --cafe-medio: #8c4a27;
+            --crema-fondo: #fdf6ec;
+            --crema-tarjeta: #fffaf3;
+            --verde-natural: #4a7c59;
+            --rojo-cuadros: #c85a53;
+            --dorado-suave: #e6b87d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--crema-fondo);
+            color: var(--cafe-oscuro);
+            line-height: 1.6;
+        }
+
+        /* Navegación y Logo */
+        header {
+            background-color: var(--crema-tarjeta);
+            border-bottom: 4px solid var(--rojo-cuadros);
+            padding: 15px 6%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .marca img {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--cafe-oscuro);
+            background-color: #fff;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .marca h1 {
+            font-family: 'Lora', serif;
+            font-size: 1.9rem;
+            color: var(--cafe-oscuro);
+        }
+
+        .marca p {
+            font-size: 0.85rem;
+            color: var(--verde-natural);
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--cafe-oscuro);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--rojo-cuadros);
+        }
+
+        /* Hero / Primera Sección con Imagen Llamativa */
+        .hero {
+            padding: 55px 8%;
+            background: linear-gradient(135deg, #fdf6ec 0%, #f9ebd7 100%);
+            border-bottom: 2px dashed var(--cafe-medio);
+        }
+
+        .hero-contenedor {
+            max-width: 1150px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-texto {
+            text-align: left;
+        }
+
+        .hero-texto h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.6rem;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: var(--cafe-oscuro);
+        }
+
+        .hero-texto .subtitulo {
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--cafe-medio);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .propuesta-caja {
+            background-color: var(--crema-tarjeta);
+            padding: 22px;
+            border-radius: 16px;
+            border: 2px solid var(--cafe-medio);
+            box-shadow: 0 5px 15px rgba(78, 42, 23, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .etiquetas {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .etiqueta {
+            background-color: var(--verde-natural);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.83rem;
+            font-weight: 500;
+        }
+
+        .hero-imagen {
+            text-align: center;
+        }
+
+        .hero-imagen img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px;
+            border: 5px solid var(--crema-tarjeta);
+            outline: 3px solid var(--rojo-cuadros);
+            box-shadow: 0 12px 28px rgba(78, 42, 23, 0.18);
+            transition: transform 0.35s ease;
+        }
+
+        .hero-imagen img:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 850px) {
+            .hero-contenedor {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-texto {
+                text-align: center;
+            }
+            .etiquetas {
+                justify-content: center;
+            }
+        }
+
+        /* Catálogo de 3 Productos */
+        .seccion {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .seccion h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+
+        .seccion > p {
+            color: var(--cafe-medio);
+            margin-bottom: 40px;
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .card {
+            background-color: var(--crema-tarjeta);
+            border: 2px solid #e6d5c1;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 22px;
+        }
+
+        .card-info h3 {
+            font-family: 'Lora', serif;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .card-info p {
+            font-size: 0.92rem;
+            color: #5c3d2e;
+            margin-bottom: 18px;
+        }
+
+        .precio {
+            display: inline-block;
+            background-color: var(--crema-fondo);
+            border: 1px solid var(--cafe-medio);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 6px 16px;
+            border-radius: 10px;
+        }
+
+        /* Buzón de Sugerencias */
+        .sugerencias-seccion {
+            background-color: #f7ebdc;
+            border-top: 2px dashed var(--cafe-medio);
+            border-bottom: 2px dashed var(--cafe-medio);
+        }
+
+        .caja-sugerencias {
+            max-width: 620px;
+            margin: 0 auto;
+            background-color: var(--crema-tarjeta);
+            padding: 32px;
+            border-radius: 18px;
+            border: 2px solid var(--verde-natural);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        .formulario-sug {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            text-align: left;
+        }
+
+        .formulario-sug label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--cafe-oscuro);
+        }
+
+        .formulario-sug input, .formulario-sug textarea {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1.5px solid #d4bea7;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            background-color: #fff;
+        }
+
+        .btn-sugerencia {
+            background-color: var(--verde-natural);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 6px;
+        }
+
+        .btn-sugerencia:hover {
+            background-color: #3a6346;
+        }
+
+        /* Contacto y Pedidos */
+        .contacto {
+            background-color: var(--cafe-oscuro);
+            color: var(--crema-fondo);
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .contacto h2 {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contacto p {
+            max-width: 600px;
+            margin: 0 auto 28px auto;
+            color: #ebd9c8;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25D366;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 30px;
+            margin-bottom: 35px;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe5d;
+        }
+
+        .formulario {
+            max-width: 520px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .formulario input, .formulario select, .formulario textarea {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .formulario button {
+            background-color: var(--rojo-cuadros);
+            color: #fff;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .formulario button:hover {
+            background-color: #b04841;
+        }
+
+        .estado-envio {
+            margin-top: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Pie de página, Botones de Redes Sociales y Créditos */
+        footer {
+            background-color: #361c0f;
+            color: #f3e6d8;
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 0.9rem;
+        }
+
+        .redes-titulo {
+            font-family: 'Lora', serif;
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+            color: var(--dorado-suave);
+        }
+
+        .redes-contenedor {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.92rem;
+            transition: transform 0.25s, opacity 0.25s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn-social:hover {
+            transform: translateY(-3px);
+            opacity: 0.92;
+        }
+
+        .btn-social svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .btn-tiktok {
+            background-color: #000000;
+            border: 1px solid #444;
+        }
+
+        .btn-facebook {
+            background-color: #1877F2;
+        }
+
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .creditos {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #d6c3b2;
+            font-size: 0.85rem;
+        }
+
+        .creditos strong {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. IDENTIDAD: NOMBRE Y LOGO -->
+    <header>
+        <div class="marca">
+            <img src="logo.png" alt="Logo Dulce Abuela">
+            <div>
+                <h1>Dulce Abuela ♥</h1>
+                <p>Pastelería artesanal • Natural • Hecha con amor familiar</p>
+            </div>
+        </div>
+        <nav>
+            <a href="#propuesta">Propuesta</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#sugerencias">Sugerencias</a>
+            <a href="#contacto">Pedidos</a>
+        </nav>
+    </header>
+
+    <!-- 2. PRIMERA SECCIÓN CON PROPUESTA DE VALOR E IMAGEN LLAMATIVA -->
+    <section id="propuesta" class="hero">
+        <div class="hero-contenedor">
+            <div class="hero-texto">
+                <h2>El sabor de casa, preparado con amor</h2>
+                <p class="subtitulo">Más que un postre, una experiencia en familia ♥</p>
+                <div class="propuesta-caja">
+                    <p>
+                        <strong>No somos una pastelería común:</strong> ofrecemos postres con historia, tradición y amor familiar.
+                        Recuperamos las recetas tradicionales de nuestra abuela utilizando frutas frescas e ingredientes 100% naturales,
+                        con menos azúcar y sin aditivos artificiales.
+                    </p>
+                </div>
+                <div class="etiquetas">
+                    <span class="etiqueta">🌿 Ingredientes Naturales</span>
+                    <span class="etiqueta">🚫 Sin aditivos artificiales</span>
+                    <span class="etiqueta">🍯 Menos azúcar</span>
+                </div>
+            </div>
+
+            <!-- ESPACIO PARA LA IMAGEN DE LA ABUELA SIRVIENDO EL PIE -->
+            <div class="hero-imagen">
+                <img src="abuela-hero.jpg" alt="Abuela sirviendo pie de manzana a sus nietos">
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. CATÁLOGO DE 3 PRODUCTOS -->
+    <section id="catalogo" class="seccion">
+        <h2>Nuestros 3 Postres Estrella</h2>
+        <p>Elaborados artesanalmente cada día con frutas frescas seleccionadas</p>
+
+        <div class="grid-productos">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1535920527002-b35e96722eb9?auto=format&fit=crop&w=600&q=80" alt="Pie artesanal de frutos rojos">
+                <div class="card-info">
+                    <h3>1. Pies Artesanales</h3>
+                    <p>Masa crocante horneada en casa con relleno abundante de frutas frescas de estación (frutos rojos, manzana o limón).</p>
+                    <span class="precio">S/ 35.00</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80" alt="Muffins saludables de arándanos">
+                <div class="card-info">
+                    <h3>2. Muffins Saludables</h3>
+                    <p>Esponjosos y nutritivos, hechos con harina integral, endulzados naturalmente y con trozos de arándanos frescos.</p>
+                    <span class="precio">S/ 6.00 c/u (Caja x6: S/ 32.00)</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="Cheesecake casero con fresas">
+                <div class="card-info">
+                    <h3>3. Cheesecakes Caseros</h3>
+                    <p>Textura cremosa sobre base de galleta artesanal, bañado con mermelada casera de fresas y arándanos naturales.</p>
+                    <span class="precio">Porción: S/ 12.00 | Entero: S/ 55.00</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. BUZÓN DE SUGERENCIAS -->
+    <section id="sugerencias" class="seccion sugerencias-seccion">
+        <h2>💡 Buzón de Sugerencias de la Abuela</h2>
+        <p>¿Qué postre tradicional te gustaría que preparemos o qué recomendación nos das?</p>
+
+        <div class="caja-sugerencias">
+            <form id="formSugerencias" class="formulario-sug">
+                <label for="sugNombre">Tu nombre (opcional):</label>
+                <input type="text" id="sugNombre" placeholder="Ej. Camila Torres">
+
+                <label for="sugPostre">¿Qué postre nuevo te gustaría ver en la carta?</label>
+                <input type="text" id="sugPostre" placeholder="Ej. Torta de zanahoria sin azúcar, Alfajores de maicena..." required>
+
+                <label for="sugMensaje">Tu recomendación o comentario:</label>
+                <textarea id="sugMensaje" rows="3" placeholder="Cuéntanos qué sabor, fruta o presentación te encantaría..." required></textarea>
+
+                <button type="submit" class="btn-sugerencia">Enviar Sugerencia</button>
+                <div id="estadoSugerencia" class="estado-envio" style="color: var(--verde-natural); text-align: center;"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 5. REGISTRO DE PEDIDOS / CONTACTO -->
+    <section id="contacto" class="contacto">
+        <h2>¡Haz tu pedido o consulta aquí!</h2>
+        <p>Atendemos pedidos individuales, cajas surtidas y celebraciones familiares.</p>
+
+        <a href="https://wa.me/51999999999?text=Hola%20Dulce%20Abuela,%20quisiera%20hacer%20un%20pedido" target="_blank" class="btn-whatsapp">
+            📱 Pedir directo por WhatsApp
+        </a>
+
+        <form id="formPedidos" class="formulario">
+            <input type="text" id="pedNombre" placeholder="Nombre del cliente" required>
+            <input type="tel" id="pedCelular" placeholder="Celular / WhatsApp" required>
+            <select id="pedPostre" required>
+                <option value="">Selecciona un postre...</option>
+                <option value="Pie Artesanal (S/ 35.00)">Pie Artesanal (S/ 35.00)</option>
+                <option value="Muffins Saludables (S/ 6.00 c/u)">Muffins Saludables (S/ 6.00 c/u)</option>
+                <option value="Caja x6 Muffins (S/ 32.00)">Caja x6 Muffins (S/ 32.00)</option>
+                <option value="Cheesecake Porción (S/ 12.00)">Cheesecake Porción (S/ 12.00)</option>
+                <option value="Cheesecake Entero (S/ 55.00)">Cheesecake Entero (S/ 55.00)</option>
+            </select>
+            <textarea id="pedDetalles" rows="3" placeholder="Detalles de tu pedido (cantidad, fecha, dedicatoria)" required></textarea>
+            <button type="submit">Registrar Pedido</button>
+            <div id="estadoPedido" class="estado-envio" style="color: #90ee90;"></div>
+        </form>
+    </section>
+
+    <!-- 6. PIE DE PÁGINA CON REDES SOCIALES Y AUTOR -->
+    <footer>
+        <p class="redes-titulo">Síguenos en nuestras redes sociales</p>
+        
+        <div class="redes-contenedor">
+            <!-- BOTÓN TIKTOK: Reemplaza "AQUI_VA_TU_LINK_DE_TIKTOK" por tu enlace real -->
+            <a href="AQUI_VA_TU_LINK_DE_TIKTOK" target="_blank" class="btn-social btn-tiktok">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                </svg>
+                TikTok
+            </a>
+
+            <!-- BOTÓN FACEBOOK: Reemplaza "AQUI_VA_TU_LINK_DE_FACEBOOK" por tu enlace real -->
+            <a href="AQUI_VA_TU_LINK_DE_FACEBOOK" target="_blank" class="btn-social btn-facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
+                </svg>
+                Facebook
+            </a>
+
+            <!-- BOTÓN INSTAGRAM: Reemplaza "AQUI_VA_TU_LINK_DE_INSTAGRAM" por tu enlace real -->
+            <a href="AQUI_VA_TU_LINK_DE_INSTAGRAM" target="_blank" class="btn-social btn-instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                </svg>
+                Instagram
+            </a>
+        </div>
+
+        <div class="creditos">
+            <p>© 2026 <strong>Dulce Abuela</strong> - Pastelería Artesanal. Todos los derechos reservados.</p>
+            <p style="margin-top: 6px;">Página web diseñada y desarrollada por <strong>Dario Ore</strong></p>
+        </div>
+    </footer>
+
+    <!-- CONEXIÓN AUTOMÁTICA A GOOGLE SHEETS (EXCEL EN DRIVE) -->
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxVgda-reDXh-zyY1l-0n2P5QMKN_BhnnwUA5J4dJblp2TPXf1AbvpLgsTRG6XJXKI3/exec";
+
+        // Enviar Pedidos a Google Sheets
+        document.getElementById("formPedidos").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const estado = document.getElementById("estadoPedido");
+            estado.textContent = "Guardando pedido...";
+
+            const datos = new URLSearchParams();
+            datos.append("tipo", "pedido");
+            datos.append("nombre", document.getElementById("pedNombre").value);
+            datos.append("celular", document.getElementById("pedCelular").value);
+            datos.append("postre", document.getElementById("pedPostre").value);
+            datos.append("detalles", document.getElementById("pedDetalles").value);
+
+            fetch(SCRIPT_URL, { method: "POST", body: datos, mode: "no-cors" })
+                .then(() => {
+                    estado.textContent = "✅ ¡Pedido registrado y guardado en nuestra base de datos!";
+                    document.getElementById("formPedidos").reset();
+                })
+                .catch(() => {
+                    estado.textContent = "❌ Error al conectar. Verifica la URL del Script.";
+                });
+        });
+
+        // Enviar Sugerencias a Google Sheets
+        document.getElementById("formSugerencias").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const estado = document.getElementById("estadoSugerencia");
+            estado.textContent = "Enviando tu idea...";
+
+            const datos = new URLSearchParams();
+            datos.append("tipo", "sugerencia");
+            datos.append("nombre", document.getElementById("sugNombre").value || "Anónimo");
+            datos.append("postre_sugerido", document.getElementById("sugPostre").value);
+            datos.append("mensaje", document.getElementById("sugMensaje").value);
+
+            fetch(SCRIPT_URL, { method: "POST", body: datos, mode: "no-cors" })
+                .then(() => {
+                    estado.textContent = "💚 ¡Gracias! Tu sugerencia ya llegó a nuestro Excel de recetas.";
+                    document.getElementById("formSugerencias").reset();
+                })
+                .catch(() => {
+                    estado.textContent = "❌ Error al enviar. Verifica la URL del Script.";
+                });
+        });
+    </script>
+
+</body>
+</html>
